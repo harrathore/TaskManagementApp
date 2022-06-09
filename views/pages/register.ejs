@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <%- include('../partials/header'); %> 
+        <style>
+          body {
+            background-color: rgb(225, 255, 245);
+          }
+          .h1{
+            text-align: center;
+          }
+          .col-sm-8{
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .form-group{
+            margin-top: 4px;
+          }
+          .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1 solid transparent;
+            border-radius: .35rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+        }
+        </style>
+    </head>
+    
+<body>
+    <div class="container mt-5">
+       
+      
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="card">
+             
+              <div class="card-body">
+                <h1>Register</h1>
+                <!-- Makes POST request to /register route -->
+                <form action="/register" method="POST">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="username">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Full Name</label>
+                    <input type="text" class="form-control" name="fullname">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="Contact">Contact Number</label>
+                    <input type="number" class="form-control" name="contactNo">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" name="age">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Your Profession</label>
+                    <input type="text" class="form-control" name="profession">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Confirm Password</label>
+                    <input type="Text" class="form-control" name="passwordC">
+                  </div>
+                   <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Register</button>
+                </form>
+      
+              </div>
+            </div>
+          </div>
+      
+      
+        </div>
+      </div>
+
+
+      <!-- <div class="modal fade" id="exampleModa2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Your Name</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">About You</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">I agree to T&C</label>
+                </div>
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+</body>
+</html>

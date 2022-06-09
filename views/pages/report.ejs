@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/header'); %> 
+        <style>
+          .card {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              min-width: 0;
+              word-wrap: break-word;
+              background-color: rgb(189, 242, 198);
+              background-clip: border-box;
+              border: 0 solid transparent;
+              border-radius: .25rem;
+              margin-bottom: 1.5rem;
+              box-shadow: 0 2px 6px 0 rgba(5, 5, 88, 0.65), 0 2px 6px 0 rgba(22, 22, 111, 0.54);
+          }
+          .container{
+            align-items: center;
+          }
+      
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+    </head>
+  <body>
+     <%- include('../partials/navbar'); %>
+     
+   
+
+    <div class="container">
+      <div class="row my-4">
+        <h2 class="text-center my-4"><strong>Track and Analysis of Your All Over Progress</strong></h2>
+        <div class="col col-lg-6 col-12">
+              <div class="mychart">
+                <canvas id="myChart"></canvas>
+              </div>
+        </div>
+          <div class="col col-lg-6 gy-lg-0 gy-4 col-12">
+            <div class="mychart2">
+              <canvas id="myChart2"></canvas>
+           </div>
+         </div>
+         <div class="card my-3 mx-4">
+          <div class="card-body">
+             <div class="container">
+                <h3>Total Done Task are : <%=done%></h3>
+                <h3>Total Remained Task are : <%=undone%></h3>
+            </div>
+          </div>
+        </div> 
+      </div>
+      <hr>
+      <div class="row my-4">
+        <h2 class="text-center my-4"><strong>Track and Analysis of Your Today's Progress</strong></h2>
+        <div class="col col-lg-6 col-12">
+              <div class="mychart">
+                <canvas id="myChart3"></canvas>
+              </div>
+         </div>
+          <div class="col col-lg-6 gy-lg-0 gy-4 col-12">
+            <div class="mychart">
+              <canvas id="myChart4"></canvas>
+           </div>
+         </div>
+
+         <div class="card my-3 mx-4">
+          <div class="card-body">
+             <div class="container">
+                <h3>Total Done Task are : <%=todaysDone%></h3>
+                <h3>Total Remained Task are : <%=todaysUndone%></h3>
+            </div>
+          </div>
+        </div>   
+      </div>
+    </div>
+
+    <div class="container align-items-center">
+      <form method="post" action="/sendReport">
+        <div class="row text-center">
+          <div class="col col-lg-10">
+            <h4>Send Your All Todos Report as SMS on Your contact</h4>
+          </div>
+          <div class="col col-lg-2">
+            <button name="btn1" value="btn1" class="btn btn-dark btn-sm mx-4" type="submit" onclick="this.form.submit()">SEND</button>
+          </div>
+        </div>
+         <div class="row text-center my-3">
+          <div class="col col-lg-10">
+            <h4>Send Your All Todos Report as email on Your Email</h4>
+          </div>
+          <div class="col col-lg-2">
+            <button name="btn2" value="btn2" class="btn btn-dark btn-sm mx-4" type="submit" onclick="this.form.submit()">SEND</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+    // var ttotal = <%=done%> + <%=undone%>;
+    const ctx = document.getElementById('myChart').getContext('2d');
+  
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total', 'Done', 'Undone'],
+            datasets: [{
+                label: 'Done Vs Remained Todos',
+                data: ["<%=total%>", "<%=done%>", "<%=undone%>"],
+                backgroundColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(54, 162, 235)',
+                      'rgb(255, 205, 86)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgb(255, 205, 86)',
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
+    const ctx2 = document.getElementById('myChart2').getContext('2d');
+    
+    const myChart2 = new Chart(ctx2, {
+        type: 'polarArea',
+        data: {
+            labels: ['Total', 'Done', 'Undone'],
+            datasets: [{
+              label: 'Done Vs Remained Todos',
+              data: ["<%=total%>", "<%=done%>", "<%=undone%>"],
+                backgroundColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(54, 162, 235)',
+                      'rgb(255, 205, 86)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgb(255, 205, 86)',
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+    
+    const ctx3 = document.getElementById('myChart3').getContext('2d');
+
+    const myChart3 = new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+            labels: ['Total', 'Done', 'Undone'],
+            datasets: [{
+                label: 'Done Vs Remained Todos',
+                data: ["<%=todaysTotal%>", "<%=todaysDone%>", "<%=todaysUndone%>"],
+                backgroundColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(54, 162, 235)',
+                      'rgb(255, 205, 86)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgb(255, 205, 86)',
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+   
+    const ctx4 = document.getElementById('myChart4').getContext('2d');
+
+    const myChart4 = new Chart(ctx4, {
+        type: 'polarArea',
+        data: {
+            labels: ['Total', 'Done', 'Undone'],
+            datasets: [{
+              label: 'Done Vs Remained Todos',
+              data: ["<%=todaysTotal%>", "<%=todaysDone%>", "<%=todaysUndone%>"],
+                backgroundColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(54, 162, 235)',
+                      'rgb(255, 205, 86)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgb(255, 205, 86)',
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+
+    </script>
+        <%- include('../partials/footer'); %>   
+    </body>
+</html>
